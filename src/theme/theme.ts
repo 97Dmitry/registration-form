@@ -1,7 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
+import { fontMaker, IBMPlexSansFont } from "./fonts"
 
-const GlobalStyle = createGlobalStyle`
+export const globalStyle = createGlobalStyle`
   ${normalize}
 
   * {padding: 0;margin: 0;border: 0;}
@@ -10,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
   a:focus, a:active {outline: none;}
   nav, footer, header, aside {display: block;}
   html, body {height: 100%;width: 100%;
-  line-height: 1.25;font-size: 16px; font-family: "IBM Plex Sans";}
+  line-height: 21px;font-size: 16px; font-family: "IBMPlexSans-Regular";}
   input, button, textarea {font-family: inherit;}
   input::-ms-clear {display: none;}
   button {cursor: pointer;}
@@ -19,9 +20,34 @@ const GlobalStyle = createGlobalStyle`
   a:hover {text-decoration: none;}
   ul li {list-style: none;}
   img {vertical-align: top;}
-  h1, h2, h3, h4, h5, h6 {font-size: inherit;font-weight: 400;margin: 0;}
+  h1, h2, h3, h4, h5, h6 {font-size: inherit;margin: 0;}
   li {list-style-type: none;}
   ul, ol {margin-left: 0;padding-left: 0;}
 `;
 
-export default GlobalStyle;
+export type ThemeType = typeof lightTheme;
+
+export const lightTheme = {
+  name: "light",
+  colors: {
+    color1: "#2C2738"
+  },
+  background: "",
+  typography: {
+    IBMPlexSans: fontMaker(IBMPlexSansFont),
+  },
+};
+
+export const darkTheme: ThemeType = {
+  name: "dark",
+  colors: {
+    color1: "none"
+  },
+  background: "",
+  typography: {
+    IBMPlexSans: fontMaker(IBMPlexSansFont),
+  },
+};
+
+const theme = lightTheme;
+export default theme
