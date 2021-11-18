@@ -1,14 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { ThemeProvider } from "styled-components";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { Fonts, GlobalStyle } from "styles";
+import { GlobalStyle, DefaultTheme } from "theme";
+import Fonts from "./assets/fonts";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Fonts />
-    <GlobalStyle />
-    <App />
+    <ThemeProvider theme={DefaultTheme}>
+      <Fonts />
+      <GlobalStyle />
+      <App />
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
