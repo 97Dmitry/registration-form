@@ -30,7 +30,10 @@ export type ThemeType = typeof lightTheme;
 export const lightTheme = {
   name: "light",
   colors: {
-    color1: "#2C2738"
+    color1: "#2C2738",
+    color2: "#756F86",
+    color3: "#dbe2ea",
+    color4: "#FF7171",
   },
   background: "",
   typography: {
@@ -41,7 +44,10 @@ export const lightTheme = {
 export const darkTheme: ThemeType = {
   name: "dark",
   colors: {
-    color1: "none"
+    color1: "none",
+    color2: "none",
+    color3: "none",
+    color4: "none",
   },
   background: "",
   typography: {
