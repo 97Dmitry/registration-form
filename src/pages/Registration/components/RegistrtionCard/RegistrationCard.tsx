@@ -3,21 +3,21 @@ import styled from "styled-components";
 import { SubmitHandler, useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { Input, Button, Checkbox } from "ui";
+import { Input, Button, Checkbox, Select } from "ui";
 
-enum Languages {
-  "Русский",
-  "Английский",
-  "Китайский",
-  "Испанский",
-}
+const LanguagesList = [
+  { value: "rus", label: "Русский" },
+  { value: "en", label: "Английский" },
+  { value: "zh", label: "Китайский" },
+  { value: "es", label: "Испанский" },
+];
 
 interface FormValues {
   name: string;
   email: string;
   phoneNumber: string;
   conditionsAgree: string;
-  language: Languages;
+  language: string;
 }
 
 const schema = yup
@@ -25,7 +25,8 @@ const schema = yup
     name: yup.string().trim().required(),
     email: yup.string().email().required(),
     phoneNumber: yup.string().required(),
-    conditionsAgree: yup.string().required(),
+    language: yup.string().required(),
+    conditionsAgree: yup.boolean().isTrue().required(),
   })
   .required();
 
@@ -39,8 +40,6 @@ const RegistrationCard: FC = () => {
   const handleRegistration: SubmitHandler<FormValues> = (data): void => {
     console.log(data);
   };
-
-  console.log(errors);
 
   return (
     <Root>
@@ -68,7 +67,6 @@ const RegistrationCard: FC = () => {
             />
           )}
         />
-
         <Controller
           control={control}
           name="email"
@@ -86,7 +84,6 @@ const RegistrationCard: FC = () => {
             />
           )}
         />
-
         <Controller
           control={control}
           name="phoneNumber"
@@ -110,8 +107,20 @@ const RegistrationCard: FC = () => {
 
         <Controller
           control={control}
+          name="language"
+          render={({ field: { onChange, value } }) => (
+            <StyledSelect
+              value={value}
+              onChange={onChange}
+              dataList={LanguagesList}
+            />
+          )}
+        />
+
+        <Controller
+          control={control}
           name="conditionsAgree"
-          render={({ field: { onChange, value, name } }) => (
+          render={({ field: { onChange, value } }) => (
             <StyledCheckbox
               value={value}
               onChange={onChange}
@@ -125,7 +134,6 @@ const RegistrationCard: FC = () => {
             />
           )}
         />
-
         <Button isDisabled={!isValid} text="Зарегистрироваться" />
       </form>
     </Root>
@@ -135,6 +143,8 @@ const RegistrationCard: FC = () => {
 const Root = styled.div`
   padding: 40px 30px;
   min-width: 360px;
+  max-width: 650px;
+  width: 100%;
 
   background: #ffffff;
   box-shadow: 0 12px 24px rgba(44, 39, 56, 0.02),
@@ -172,6 +182,10 @@ const StyledCheckbox = styled(Checkbox)`
 
 const CheckboxLink = styled.a`
   color: ${({ theme }) => theme.colors.color5};
+`;
+
+const StyledSelect = styled(Select)`
+  margin-bottom: 32px;
 `;
 
 export default RegistrationCard;

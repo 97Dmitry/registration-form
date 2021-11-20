@@ -51,14 +51,17 @@ const Root = styled.div`
 
 const StyledInput = styled.input`
   width: 100%;
-  border: 2px solid ${({ theme: { colors } }) => colors.color3};
+  border: 1px solid ${({ theme: { colors } }) => colors.color3};
   box-sizing: border-box;
   box-shadow: 0 4px 8px rgba(44, 39, 56, 0.04);
   border-radius: 6px;
   padding: 16px;
+  &::placeholder {
+    color: ${({ theme: { colors } }) => colors.color10};
+  }
 
   &:focus {
-    border: 2px solid ${({ theme: { colors } }) => colors.color5};
+    outline: 2px solid ${({ theme: { colors } }) => colors.color5};
   }
 `;
 
