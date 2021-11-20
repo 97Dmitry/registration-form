@@ -1,6 +1,6 @@
-import { createGlobalStyle } from 'styled-components';
-import { normalize } from 'styled-normalize';
-import { fontMaker, IBMPlexSansFont } from "./fonts"
+import { createGlobalStyle } from "styled-components";
+import { normalize } from "styled-normalize";
+import { fontMaker, IBMPlexSansFont } from "./fonts";
 
 export const globalStyle = createGlobalStyle`
   ${normalize}
@@ -34,6 +34,8 @@ export const lightTheme = {
     color2: "#756F86",
     color3: "#dbe2ea",
     color4: "#FF7171",
+    color5: "#0880AE",
+    color6: "#EBF4F8",
   },
   background: "",
   typography: {
@@ -48,6 +50,8 @@ export const darkTheme: ThemeType = {
     color2: "none",
     color3: "none",
     color4: "none",
+    color5: "none",
+    color6: "none",
   },
   background: "",
   typography: {
@@ -56,4 +60,4 @@ export const darkTheme: ThemeType = {
 };
 
 const theme = lightTheme;
-export default theme
+export default theme;

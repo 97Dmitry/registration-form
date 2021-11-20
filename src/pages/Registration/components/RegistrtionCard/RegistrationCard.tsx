@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { SubmitHandler, useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import Input from "ui";
+import { Input, Button } from "ui";
 
 enum Languages {
   "Русский",
@@ -55,15 +55,9 @@ const RegistrationCard: FC = () => {
               error={errors.name}
               label="Имя"
               placeholder="Введите имя"
-              onChange={(val) => {
-                if (
-                  val.nativeEvent.data &&
-                  val.nativeEvent.data !== "-" &&
-                  val.nativeEvent.data !== " " &&
-                  val.nativeEvent.data?.match(/[0-9_\W]/)
-                ) {
-                  return;
-                } else onChange(val.target.value);
+              onChange={(val: React.ChangeEvent<HTMLInputElement>) => {
+                const targetValue = val.target.value;
+                onChange(targetValue.replace(/[^a-zA-Zа-яА-Я- ]/g, ""));
               }}
               value={value}
             />
@@ -94,14 +88,17 @@ const RegistrationCard: FC = () => {
               error={errors.phoneNumber}
               label="Номер телефона"
               placeholder="Введите номер телефона"
-              onChange={(val: React.ChangeEvent<HTMLInputElement>) =>
-                onChange(val.target.value)
-              }
+              onChange={(val: React.ChangeEvent<HTMLInputElement>) => {
+                const targetValue = val.target.value;
+                if (targetValue.match(/[0-9]/g)?.length === 12) return;
+
+                onChange(targetValue.replace(/[^0-9()+-]/g, ""));
+              }}
               value={value}
             />
           )}
         />
-        <button type="submit">Submit</button>
+        <Button text="Зарегистрироваться" />
       </form>
     </Root>
   );
@@ -112,8 +109,8 @@ const Root = styled.div`
   min-width: 360px;
 
   background: #ffffff;
-  box-shadow: 0px 12px 24px rgba(44, 39, 56, 0.02),
-    0px 32px 64px rgba(44, 39, 56, 0.04);
+  box-shadow: 0 12px 24px rgba(44, 39, 56, 0.02),
+    0 32px 64px rgba(44, 39, 56, 0.04);
   border-radius: 24px;
 `;
 
@@ -126,8 +123,6 @@ const Title = styled.h1`
 
 const IsHaveAccount = styled.span`
   color: ${({ theme }) => theme.colors.color1};
-  ${({ theme: { typography } }) =>
-    typography.IBMPlexSans({ size: 16, lineHeight: 22 })};
   margin-right: 6px;
 `;
 

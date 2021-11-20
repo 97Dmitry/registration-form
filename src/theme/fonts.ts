@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 import IBMPlexSansBoldWoff from "assets/fonts/IMBPlexSans/IBMPlexSans-Bold.woff";
 import IBMPlexSansBoldWoff2 from "assets/fonts/IMBPlexSans/IBMPlexSans-Bold.woff";
@@ -9,11 +9,10 @@ import IBMPlexSansMediumWoff2 from "assets/fonts/IMBPlexSans/IBMPlexSans-Medium.
 import IBMPlexSansRegularWoff from "assets/fonts/IMBPlexSans/IBMPlexSans-Regular.woff";
 import IBMPlexSansRegularWoff2 from "assets/fonts/IMBPlexSans/IBMPlexSans-Regular.woff";
 
-
 const Fonts = createGlobalStyle`
   @font-face {
-    font-family: "IBMPlexSans-Bolt";
-    src: local("IBM Plex Sans Bolt"), local("IBMPlexSans-Bolt"),
+    font-family: "IBMPlexSans-Bold";
+    src: local("IBM Plex Sans Bold"), local("IBMPlexSans-Bold"),
     url(${IBMPlexSansBoldWoff}) format("woff"),
     url(${IBMPlexSansBoldWoff2}) format("woff2");
     font-weight: 700;
@@ -40,21 +39,21 @@ const Fonts = createGlobalStyle`
 type WeightType = 400 | 500 | 700;
 
 export const fontMaker =
-  (font: Record<string, string>) => (options: { weight?: WeightType; size?: number; lineHeight?: number }) => {
-    const { weight = font[500], size = 16, lineHeight = 2 } = options;
+  (font: Record<string, string>) =>
+  (options: { weight?: WeightType; size?: number; lineHeight?: number }) => {
+    const { weight = font[400], size = 16, lineHeight = 21 } = options;
 
     return {
-      'font-family': font[weight],
-      'font-size': size,
-      'line-height': lineHeight,
+      "font-family": font[weight],
+      "font-size": size,
+      "line-height": lineHeight,
     };
   };
 
 export const IBMPlexSansFont: { [index: string]: string } = {
-  '400': 'IBMPlexSans-Regular',
-  '500': 'IBMPlexSans-Medium',
-  '700': 'IBMPlexSans-Bold',
+  "400": "IBMPlexSans-Regular",
+  "500": "IBMPlexSans-Medium",
+  "700": "IBMPlexSans-Bold",
 };
-
 
 export default Fonts;

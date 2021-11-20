@@ -4,7 +4,7 @@ import { ThemeProvider } from "styled-components";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { GlobalStyle, DefaultTheme } from "theme";
-import Fonts from "./assets/fonts";
+import Fonts from "theme/fonts";
 
 ReactDOM.render(
   <React.StrictMode>

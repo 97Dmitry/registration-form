@@ -1,15 +1,14 @@
-import { FC } from "react";
-import { UseFormRegister } from "react-hook-form";
+import React, { FC } from "react";
 import styled from "styled-components";
 
 interface InputProps {
-  type?: "text" | "email" | "password";
+  type?: React.HTMLInputTypeAttribute;
   placeholder: string;
   label: string;
   error: any;
   name: string;
-  onChange: (val: any) => void;
-  value: string;
+  onChange?: (val: any) => void;
+  value?: string;
 }
 
 const Input: FC<InputProps> = ({
@@ -20,11 +19,13 @@ const Input: FC<InputProps> = ({
   error,
   value,
   onChange,
+  ...props
 }) => {
   return (
     <Root>
       <Label htmlFor={name}>{label}</Label>
       <StyledInput
+        {...props}
         type={type}
         id={name}
         placeholder={placeholder}
@@ -44,11 +45,15 @@ const Root = styled.div`
 
 const StyledInput = styled.input`
   width: 100%;
-  border: 1px solid ${({ theme: { colors } }) => colors.color3};
+  border: 2px solid ${({ theme: { colors } }) => colors.color3};
   box-sizing: border-box;
-  box-shadow: 0px 4px 8px rgba(44, 39, 56, 0.04);
+  box-shadow: 0 4px 8px rgba(44, 39, 56, 0.04);
   border-radius: 6px;
   padding: 16px;
+
+  &:focus {
+    border: 2px solid ${({ theme: { colors } }) => colors.color5};
+  }
 `;
 
 const Label = styled.label`
