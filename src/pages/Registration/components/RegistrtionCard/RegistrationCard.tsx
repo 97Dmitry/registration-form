@@ -52,9 +52,10 @@ const RegistrationCard: FC = () => {
         <Controller
           control={control}
           name="name"
-          render={({ field: { onChange, value } }) => (
+          render={({ field: { onChange, value, onBlur } }) => (
             <StyledInput
               name="name"
+              onBlur={onBlur}
               error={errors.name}
               touched={touchedFields.name}
               label="Имя"
@@ -70,10 +71,11 @@ const RegistrationCard: FC = () => {
         <Controller
           control={control}
           name="email"
-          render={({ field: { onChange, value } }) => (
+          render={({ field: { onChange, value, onBlur } }) => (
             <StyledInput
               name="email"
               error={errors.email}
+              onBlur={onBlur}
               touched={touchedFields.email}
               label="Email"
               placeholder="Введите email"
@@ -87,10 +89,11 @@ const RegistrationCard: FC = () => {
         <Controller
           control={control}
           name="phoneNumber"
-          render={({ field: { onChange, value } }) => (
+          render={({ field: { onChange, value, onBlur } }) => (
             <StyledInput
               name="phoneNumber"
               error={errors.phoneNumber}
+              onBlur={onBlur}
               touched={touchedFields.phoneNumber}
               label="Номер телефона"
               placeholder="Введите номер телефона"

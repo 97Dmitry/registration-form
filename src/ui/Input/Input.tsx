@@ -11,6 +11,7 @@ interface InputProps {
   className?: string;
   touched?: any;
   value?: string;
+  onBlur?: () => void;
 }
 
 const Input: FC<InputProps> = ({
@@ -21,6 +22,7 @@ const Input: FC<InputProps> = ({
   error,
   value,
   onChange,
+  onBlur,
   className,
   touched,
   ...props
@@ -30,6 +32,7 @@ const Input: FC<InputProps> = ({
       <Label htmlFor={name}>{label}</Label>
       <StyledInput
         {...props}
+        onBlur={onBlur}
         type={type}
         id={name}
         placeholder={placeholder}
