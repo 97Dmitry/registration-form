@@ -8,6 +8,8 @@ interface InputProps {
   error: any;
   name: string;
   onChange?: (val: any) => void;
+  className?: string;
+  touched?: any;
   value?: string;
 }
 
@@ -19,10 +21,12 @@ const Input: FC<InputProps> = ({
   error,
   value,
   onChange,
+  className,
+  touched,
   ...props
 }) => {
   return (
-    <Root>
+    <Root className={className}>
       <Label htmlFor={name}>{label}</Label>
       <StyledInput
         {...props}
@@ -32,7 +36,9 @@ const Input: FC<InputProps> = ({
         value={value}
         onChange={onChange}
       />
-      <ErrorMessage>{error && "Введено не корректное значение"}</ErrorMessage>
+      <ErrorMessage>
+        {error && touched && "Введено не корректное значение"}
+      </ErrorMessage>
     </Root>
   );
 };

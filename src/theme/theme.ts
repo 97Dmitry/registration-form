@@ -36,6 +36,8 @@ export const lightTheme = {
     color4: "#FF7171",
     color5: "#0880AE",
     color6: "#EBF4F8",
+    color7: "#756F86",
+    color8: "#B1B5BF",
   },
   background: "",
   typography: {
@@ -52,6 +54,8 @@ export const darkTheme: ThemeType = {
     color4: "none",
     color5: "none",
     color6: "none",
+    color7: "none",
+    color8: "none",
   },
   background: "",
   typography: {
