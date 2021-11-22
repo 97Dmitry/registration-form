@@ -15,7 +15,7 @@ export default Registration;
 const Root = styled.section`
   height: 100vh;
   width: 100vw;
-
+  overflow: scroll;
   display: flex;
   flex-direction: column;
   align-items: center;
