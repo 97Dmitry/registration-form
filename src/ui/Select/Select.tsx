@@ -81,6 +81,8 @@ const OptionList = styled.div`
   z-index: 10;
   top: 64px;
   width: 100%;
+  max-height: 220px;
+  overflow-y: scroll;
   border: 1px solid ${({ theme: { colors } }) => colors.color3};
   box-shadow: 0 4px 8px rgba(44, 39, 56, 0.04),
     0 20px 20px rgba(44, 39, 56, 0.04);

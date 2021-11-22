@@ -148,6 +148,7 @@ const Root = styled.div`
   min-width: 360px;
   max-width: 650px;
   width: 100%;
+  max-height: 95%;
 
   background: #ffffff;
   box-shadow: 0 12px 24px rgba(44, 39, 56, 0.02),
